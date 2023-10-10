@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { createExpanse } from "../model/create_expanse";
-import { userExists } from "../utils/userExists";
+import { createExpanse } from "../../model/create_expanse/create_expanse";
+import { userExists } from "../../utils/userExists";
 
-export const create_expanse = async (req: Request, res: Response) => {
+export const createExpanseController = async (req: Request, res: Response) => {
   const { name, amount, date, categoryId, userId } = req.body;
   if (
     typeof name !== "string" ||

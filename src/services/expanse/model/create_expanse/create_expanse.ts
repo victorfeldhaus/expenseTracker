@@ -1,5 +1,5 @@
 import exp from "constants";
-import { dao } from "../../../database/DAO";
+import { dao } from "../../../../database/DAO";
 
 export const createExpanse = async (
   name: string,

@@ -1,5 +1,8 @@
+import dotenv from "dotenv";
+
+dotenv.config();
 export default class EnvionmentConfig {
-  public static instance: EnvionmentConfig = new EnvionmentConfig();
+  public static instance: EnvionmentConfig;
   public readonly app: AppConfig;
   public readonly database: DatabaseConfig;
 
@@ -22,8 +25,15 @@ export default class EnvionmentConfig {
       port: handleNumber(process.env.DB_PORT as string),
       user: process.env.DB_USER as string,
       password: process.env.DB_PASSWORD as string,
-      database: process.env.DB_DATABASE as string,
+      database: process.env.DB_NAME as string,
     };
+  }
+
+  public static getInstance(): EnvionmentConfig {
+    if (!EnvionmentConfig.instance) {
+      EnvionmentConfig.instance = new EnvionmentConfig();
+    }
+    return EnvionmentConfig.instance;
   }
 }
 
