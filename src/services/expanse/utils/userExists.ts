@@ -11,5 +11,6 @@ export const userExists = async (userId: number) => {
       returnMode: "firstValue",
     }
   );
+  if (res === null) return false;
   return res;
 };

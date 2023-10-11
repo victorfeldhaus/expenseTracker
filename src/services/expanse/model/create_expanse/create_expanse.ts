@@ -8,7 +8,7 @@ export const createExpanse = async (
   categoryId: number,
   userId: number
 ) => {
-  const res = dao.insert("expanse", {
+  const res = dao.insert("expense", {
     description: name,
     amount,
     date,
