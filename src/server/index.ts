@@ -1,6 +1,6 @@
 import { log } from "console";
 import express from "express";
-import EnvionmentConfig from "../env/envConfig";
+import EnvironmentConfig from "../env/envConfig";
 import { middleware } from "../middlewares";
 import { routes } from "../routes";
 export const server = () => {
@@ -10,7 +10,7 @@ export const server = () => {
 
   routes(app);
 
-  app.listen(EnvionmentConfig.getInstance().app.port, () =>
-    log(`Listening port: ${EnvionmentConfig.getInstance().app.port}`)
+  app.listen(EnvironmentConfig.getInstance().app.port, () =>
+    log(`Listening port: ${EnvironmentConfig.getInstance().app.port}`)
   );
 };

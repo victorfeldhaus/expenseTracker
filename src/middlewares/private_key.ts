@@ -1,9 +1,9 @@
 import { Application } from "express";
 import EnvionmentConfig from "../env/envConfig";
 
-export const authKey = (app: Application) => {
+export const privateKey = (app: Application) => {
   app.use((req, res, next) => {
-    const authKey = req.headers["auth"];
+    const authKey = req.headers["private-key"];
 
     if (authKey === EnvionmentConfig.getInstance().app.privateKey) {
       next();

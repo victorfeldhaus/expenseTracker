@@ -1,10 +1,10 @@
 import { DataAccessObject } from "mysql-all-in-one";
-import EnvionmentConfig from "../env/envConfig";
+import EnvironmentConfig from "../env/envConfig";
 
 export const dao = new DataAccessObject({
-  host: EnvionmentConfig.getInstance().database.host,
-  user: EnvionmentConfig.getInstance().database.user,
-  port: EnvionmentConfig.getInstance().database.port,
-  password: EnvionmentConfig.getInstance().database.password,
-  database: EnvionmentConfig.getInstance().database.database,
+  host: EnvironmentConfig.getInstance().database.host,
+  user: EnvironmentConfig.getInstance().database.user,
+  port: EnvironmentConfig.getInstance().database.port,
+  password: EnvironmentConfig.getInstance().database.password,
+  database: EnvironmentConfig.getInstance().database.database,
 });

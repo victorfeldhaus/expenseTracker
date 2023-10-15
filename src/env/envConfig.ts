@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 
 dotenv.config();
-export default class EnvionmentConfig {
-  public static instance: EnvionmentConfig;
+export default class EnvironmentConfig {
+  public static instance: EnvironmentConfig;
   public readonly app: AppConfig;
   public readonly database: DatabaseConfig;
 
@@ -29,11 +29,11 @@ export default class EnvionmentConfig {
     };
   }
 
-  public static getInstance(): EnvionmentConfig {
-    if (!EnvionmentConfig.instance) {
-      EnvionmentConfig.instance = new EnvionmentConfig();
+  public static getInstance(): EnvironmentConfig {
+    if (!EnvironmentConfig.instance) {
+      EnvironmentConfig.instance = new EnvironmentConfig();
     }
-    return EnvionmentConfig.instance;
+    return EnvironmentConfig.instance;
   }
 }
 
