@@ -1,0 +1,58 @@
+version: '3.16'
+
+networks:
+  local:
+    name: local
+services:
+  mysql_local:
+    platform: linux/amd64
+    image: mysql:5.7.39-debian
+    container_name: mysql_database
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - TZ=America/Araguaina
+    networks:
+      - barber-local
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 40s
+      retries: 10
+    command: ['mysqld', '--sql-mode=NO_ENGINE_SUBSTITUTION']
+  client_database:
+    stdin_open: true
+    platform: linux/amd64
+    image: local/database_local:1.0.0
+    container_name: database
+    build:
+      context: ./
+      dockerfile: Local.Database.Dockerfile
+    depends_on:
+      database:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    environment:
+      - TZ=America/Araguaina
+    networks:
+      - local
+  # services:
+  #   platform: linux/amd64
+  #   image: barber/services_local:1.0.0
+  #   container_name: barber_services
+  #   build:
+  #     context: ./services
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     client_database:
+  #       condition: service_completed_successfully
+  #   env_file:
+  #     - envs/.env
+  #     - envs/services.env
+  #   environment:
+  #     - APP_PORT=3036
+  #   networks:
+  #     - barber-local
+  #   ports:
+  #     - 3036:3036

@@ -1,5 +1,5 @@
 import exp from "constants";
-import { dao } from "../../../../database/DAO";
+import { prisma } from "../../../../database/client";
 
 export const createExpanse = async (
   name: string,
@@ -8,12 +8,14 @@ export const createExpanse = async (
   categoryId: number,
   userId: number
 ) => {
-  const res = dao.insert("expense", {
-    description: name,
-    amount,
-    date,
-    categoryId,
-    userId,
+  const res = await prisma.expense.create({
+    data: {
+      description: name,
+      amount,
+      date,
+      categoryId,
+      userId,
+    },
   });
 
   return res;

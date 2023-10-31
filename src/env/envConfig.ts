@@ -5,6 +5,7 @@ export default class EnvironmentConfig {
   public static instance: EnvironmentConfig;
   public readonly app: AppConfig;
   public readonly database: DatabaseConfig;
+  public readonly auth: Auth;
 
   private constructor() {
     const handleNumber = (val: string) => {
@@ -27,6 +28,9 @@ export default class EnvironmentConfig {
       password: process.env.DB_PASSWORD as string,
       database: process.env.DB_NAME as string,
     };
+    this.auth = {
+      tokenKey: process.env.TOKEN_KEY as string,
+    };
   }
 
   public static getInstance(): EnvironmentConfig {
@@ -48,4 +52,8 @@ interface DatabaseConfig {
   user: string;
   password: string;
   database: string;
+}
+
+interface Auth {
+  tokenKey: string;
 }

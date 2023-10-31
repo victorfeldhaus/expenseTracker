@@ -14,12 +14,11 @@ Este √© um projeto de rastreamento de despesas em Node.js que fornece autentica√
 
 - Node.js (v14 ou superior)
 - npm (gerenciador de pacotes Node.js)
-- Banco de dados MyqlSQL
+- Banco de dados MySQL
 
 ## Tecnologias
 
-- Prisma
-- Mysql-all-in-one
+- Prisma ORM
 - Typescript
 - Express
 

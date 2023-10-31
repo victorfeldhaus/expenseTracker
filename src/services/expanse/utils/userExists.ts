@@ -1,16 +1,11 @@
-import { dao } from "../../../database/DAO";
+import { prisma } from "../../../database/client";
 
-export const userExists = async (userId: number) => {
-  const res = await dao.select(
-    {
-      from: "user",
-      columns: ["id"],
-      where: { id: userId },
+export const userExists = async (id: number) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: id,
     },
-    {
-      returnMode: "firstValue",
-    }
-  );
-  if (res === null) return false;
-  return res;
+  });
+
+  return user;
 };

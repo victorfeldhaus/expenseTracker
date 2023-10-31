@@ -1,5 +1,9 @@
 {
     "EXPANSE": {
         "CREATE": "/expanse/create"
+    },
+    "USER": {
+        "CREATE": "/user/create",
+        "LOGIN": "/user/login"
     }
 }
