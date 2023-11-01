@@ -4,7 +4,7 @@ import { prisma } from "../../../../database/client";
 export const createExpanse = async (
   name: string,
   amount: number,
-  date: string,
+  date: Date,
   categoryId: number,
   userId: number
 ) => {

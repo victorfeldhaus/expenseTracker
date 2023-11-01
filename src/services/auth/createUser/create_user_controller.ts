@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userExists } from "../../../utils/user_exists";
-import { createUser } from "./create_user";
+import { createUser } from "../model/create_user";
 import { hash } from "bcrypt";
 
 export const createUserController = async (req: Request, res: Response) => {

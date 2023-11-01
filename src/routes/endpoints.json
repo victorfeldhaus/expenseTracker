@@ -1,6 +1,7 @@
 {
-    "EXPANSE": {
-        "CREATE": "/expanse/create"
+    "EXPENSE": {
+        "CREATE": "/expanse/create",
+        "GET": "/expanse/get/:userId"
     },
     "USER": {
         "CREATE": "/user/create",

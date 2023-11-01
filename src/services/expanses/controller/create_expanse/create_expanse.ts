@@ -4,16 +4,26 @@ import { userExists } from "../../utils/userExists";
 
 export const createExpanseController = async (req: Request, res: Response) => {
   const { name, amount, date, categoryId, userId } = req.body;
+  if (!(await userExists(userId))) {
+    return res.status(401).json({ message: "NÃO AUTORIZADO" });
+  }
   if (
     typeof name !== "string" ||
     typeof amount !== "number" ||
     typeof date !== "string" ||
-    typeof categoryId !== "number" ||
-    !(await userExists(userId))
-  )
-    return res.status(400).json({ message: "UNPROCESSITY" });
+    typeof categoryId !== "number"
+  ) {
+    return res.status(422).json({ message: "UNPROCESSITY" });
+  }
 
-  const expanse = await createExpanse(name, amount, date, categoryId, userId);
+  const formattedDate = new Date(date.split("/").reverse().join("/"));
+  const expanse = await createExpanse(
+    name,
+    amount,
+    formattedDate,
+    categoryId,
+    userId
+  );
 
   if (!expanse)
     return res.status(500).json({ message: "SERVER_INTERAL_ERROR" });

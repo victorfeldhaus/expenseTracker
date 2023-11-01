@@ -7,7 +7,7 @@ const tokenKey = EnvironmentConfig.getInstance().auth.tokenKey;
 
 export const loginController = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-
+  console.log(email, password);
   if (typeof email !== "string" || typeof password !== "string") {
     return res.status(422).json({ message: "INVALID_DATA" });
   }
